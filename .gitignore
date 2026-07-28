@@ -1,0 +1,6 @@
+# Internal working files — not part of the deployed site
+grupoverdechile/
+
+# OS files
+.DS_Store
+Thumbs.db
