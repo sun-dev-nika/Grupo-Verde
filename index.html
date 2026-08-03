@@ -298,9 +298,9 @@
             proyecto o marca, integrando diseño, durabilidad y economía circular.
           </p>
           <div class="hero-actions">
-            <a href="assets/catalogo-grupoverdechile.pdf" class="btn btn-primary" download>
-              Descargar catálogo (PDF)
-            </a>
+            <button type="button" class="btn btn-primary" data-pdf-open>
+              Ver catálogo
+            </button>
             <a
               href="mailto:plopez@grupoverdechile.cl?subject=Cotizaci%C3%B3n%20Grupo%20Verde%20Chile&body=Hola%2C%20me%20gustar%C3%ADa%20cotizar%20los%20siguientes%20productos%3A%0A%0A-%20%0A-%20%0A%0AGracias."
               class="btn btn-ghost"
@@ -308,6 +308,9 @@
               Solicitar cotización →
             </a>
           </div>
+          <a href="assets/catalogo-grupoverdechile.pdf" class="pdf-download-link" download>
+            Descargar catálogo en PDF
+          </a>
         </div>
       </div>
     </section>
@@ -317,14 +320,14 @@
         <p class="eyebrow eyebrow-light">Cotiza con nosotros</p>
         <h2>Trabajemos juntos y logremos un futuro sostenible.</h2>
         <p class="cta-lead">
-          Descarga nuestro catálogo o escríbenos directamente. Respondemos
+          Revisa nuestro catálogo o escríbenos directamente. Respondemos
           cotizaciones a la brevedad.
         </p>
 
         <div class="hero-actions">
-          <a href="assets/catalogo-grupoverdechile.pdf" class="btn btn-primary" download>
-            Descargar catálogo (PDF)
-          </a>
+          <button type="button" class="btn btn-primary" data-pdf-open>
+            Ver catálogo
+          </button>
           <a
             href="mailto:plopez@grupoverdechile.cl?subject=Cotizaci%C3%B3n%20Grupo%20Verde%20Chile&body=Hola%2C%20me%20gustar%C3%ADa%20cotizar%20los%20siguientes%20productos%3A%0A%0A-%20%0A-%20%0A%0AGracias."
             class="btn btn-ghost"
@@ -332,6 +335,9 @@
             Solicitar cotización →
           </a>
         </div>
+        <a href="assets/catalogo-grupoverdechile.pdf" class="pdf-download-link pdf-download-link-light" download>
+          Descargar catálogo en PDF
+        </a>
       </div>
     </section>
   </main>
@@ -371,6 +377,36 @@
       </div>
     </div>
   </footer>
+
+  <div class="pdf-modal" id="pdfModal" role="dialog" aria-modal="true" aria-label="Catálogo Grupo Verde Chile" aria-hidden="true">
+    <div class="pdf-modal__backdrop" data-pdf-close></div>
+    <div class="pdf-modal__panel">
+      <div class="pdf-modal__bar">
+        <span class="pdf-modal__title">Catálogo Grupo Verde Chile</span>
+        <div class="pdf-modal__bar-actions">
+          <a
+            href="assets/catalogo-grupoverdechile.pdf"
+            target="_blank"
+            rel="noopener"
+            class="pdf-modal__external"
+          >
+            Abrir en pestaña nueva ↗
+          </a>
+          <button type="button" class="pdf-modal__close" id="pdfModalClose" aria-label="Cerrar catálogo">
+            ✕
+          </button>
+        </div>
+      </div>
+      <div class="pdf-modal__body">
+        <p class="pdf-modal__loading" id="pdfModalLoading">Cargando catálogo…</p>
+        <iframe
+          class="pdf-modal__frame"
+          id="pdfModalFrame"
+          title="Catálogo Grupo Verde Chile"
+        ></iframe>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js" defer></script>
 </body>

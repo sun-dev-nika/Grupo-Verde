@@ -41,6 +41,60 @@
     });
   }
 
+  /* ---------- Visor de catálogo (PDF embebido en modal) ---------- */
+  const pdfModal = document.getElementById("pdfModal");
+  const pdfFrame = document.getElementById("pdfModalFrame");
+  const pdfLoading = document.getElementById("pdfModalLoading");
+  const pdfOpenTriggers = document.querySelectorAll("[data-pdf-open]");
+  const pdfCloseTriggers = document.querySelectorAll("[data-pdf-close], #pdfModalClose");
+
+  if (pdfModal && pdfFrame && pdfOpenTriggers.length) {
+    const PDF_SRC = "assets/catalogo-grupoverdechile.pdf";
+    let lastFocused = null;
+
+    const openPdfModal = () => {
+      if (!pdfFrame.getAttribute("src")) {
+        pdfFrame.addEventListener(
+          "load",
+          () => {
+            if (pdfLoading) pdfLoading.hidden = true;
+          },
+          { once: true }
+        );
+        pdfFrame.setAttribute("src", PDF_SRC);
+      }
+
+      lastFocused = document.activeElement;
+      pdfModal.classList.add("open");
+      pdfModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+
+      const closeBtn = document.getElementById("pdfModalClose");
+      if (closeBtn) closeBtn.focus();
+    };
+
+    const closePdfModal = () => {
+      pdfModal.classList.remove("open");
+      pdfModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+      if (lastFocused instanceof HTMLElement) lastFocused.focus();
+    };
+
+    pdfOpenTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", openPdfModal);
+    });
+
+    pdfCloseTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", closePdfModal);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && pdfModal.classList.contains("open")) {
+        closePdfModal();
+      }
+    });
+  }
+
   /* ---------- Reveal on scroll ---------- */
   const revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealEls.length) {
